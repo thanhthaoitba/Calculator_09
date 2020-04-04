@@ -5,33 +5,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   >
-
+    android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <LinearLayout
-        android:layout_width="410dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:id="@+id/text_layout"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="95dp"
             android:background="@android:color/darker_gray"
             android:hint="123456"
-            android:paddingLeft="120dp"
+            android:paddingLeft="150dp"
             android:textColorHint="@android:color/white"
-            android:textSize="80sp" />
+            android:textSize="70sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_layout"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAligned="false"
             android:orientation="horizontal">
@@ -58,7 +60,7 @@
                 android:textSize="40sp" />
 
             <Button
-                android:layout_width="110dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@drawable/opertion_border"
                 android:text="+"
@@ -173,4 +175,5 @@
                 android:textSize="40sp" />
         </LinearLayout>
     </LinearLayout>
+</RelativeLayout>
 </RelativeLayout>
