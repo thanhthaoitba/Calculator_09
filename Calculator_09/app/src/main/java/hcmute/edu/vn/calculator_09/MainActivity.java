@@ -10,9 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private TextView screen;
-    private String numText,sign;
-    private double currentNum,previousNum, result;
-    private  boolean Flag = false;
+    private String numText,sign,equation ="";
+    private double  result = 0,num;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,41 +24,61 @@ public class MainActivity extends AppCompatActivity {
     public void  onClick(View view){
         try{
             Button button = (Button)view;
-            numText+=button.getText().toString();
 
-            if(Flag == true) currentNum = Double.parseDouble(numText);
-            else previousNum = Double.parseDouble(numText);
+            numText += button.getText().toString();
+            equation+=button.getText().toString();
+            //check
+            num = Double.valueOf(numText);
             screen.setText(numText);
-            Flag = false;
         }catch (Exception Ex){
-            numText = numText.substring(0,numText.length()-1);
-        Toast.makeText(this,"Err",Toast.LENGTH_SHORT).show();
-    }
-
+            equation = equation.substring(0,equation.length()-1);
+        Toast.makeText(this,"Invalid decimal format!",Toast.LENGTH_SHORT).show();
+        }
     }
     public void onClickSign(View view){
         Button button = (Button)view;
         sign=button.getText().toString();
         screen.setText(sign);
-        numText = "";
-        Flag = true;
+        equation+=sign;
+        numText ="";
     }
     public void onClickRefresh(View view){
+        result = 0;
+        equation = "";
+        numText ="";
         screen.setText("");
-        currentNum = 0;
-        previousNum = 0;
+    }
+    public double Calculate(String equation){
+            equation = equation.replace("-", "+-");
+            String[] parts = equation.split("(?=[/*+])|(?<=[/*+])");
+            result = Double.parseDouble(parts[0]);
+            for (int i = 1; i < parts.length; i += 2) {
+                String operand = parts[i];
+                double val = Double.parseDouble(parts[i+1]);
+                switch (operand) {
+                    case "*" :
+                        result *= val;
+                        break;
+                    case "/" :
+                        result /= val;
+                        break;
+                    case "+":
+                        result+=val;
+                        break;
+                }
+            }
+            return result;
     }
     public  void onClickCalculate(View view){
         //Tính toán here
+
         try {
-            if(sign.equals("+")) {
-                result = previousNum + currentNum ;
-            }
-            screen.setText(String.valueOf(result));
+            //screen.setText(String.valueOf(Calculate(equation)) );
+            screen.setText(Calculate(equation)+"");
             numText = "";
+        }catch (Exception ex){
+            Toast.makeText(this,ex.getMessage(),Toast.LENGTH_SHORT).show();
         }
-        catch (Exception ex){
-            Toast.makeText(this,"Err",Toast.LENGTH_SHORT).show();
-        }
+
     }
 }
