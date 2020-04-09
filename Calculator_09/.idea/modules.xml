@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/Calculator_09-Calculator_09.iml" filepath="$PROJECT_DIR$/Calculator_09-Calculator_09.iml" group="Calculator_09" />
       <module fileurl="file://$PROJECT_DIR$/Group09Android_Calculator-Calculator_09.iml" filepath="$PROJECT_DIR$/Group09Android_Calculator-Calculator_09.iml" group="Calculator_09" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Calculator_09/app" />
+      <module fileurl="file://$PROJECT_DIR$/github-Calculator_09-Calculator_09.iml" filepath="$PROJECT_DIR$/github-Calculator_09-Calculator_09.iml" group="Calculator_09" />
     </modules>
   </component>
 </project>
