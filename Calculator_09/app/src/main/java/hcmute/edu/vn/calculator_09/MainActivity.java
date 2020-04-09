@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             Button button = (Button)view;
 
             numText += button.getText().toString();
-            equation+=button.getText().toString();
+
             //check
             num = Double.valueOf(numText);
             screen.setText(numText);
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
            So[dau]=Double.parseDouble(demo);
 
         }catch (Exception Ex){
-            equation = equation.substring(0,equation.length()-1);
+            numText = numText.substring(0,numText.length()-1);
         Toast.makeText(this,"Invalid decimal format!",Toast.LENGTH_SHORT).show();
         }
     }
@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         numText ="";
             Toantu=Toantu+sign;
             dau++;
-       // Toast.makeText(this, ""+demo, Toast.LENGTH_SHORT).show();
-        //Toantu[dau]=sign;
-       // dau++;
+            // Toast.makeText(this, ""+demo, Toast.LENGTH_SHORT).show();
+            //Toantu[dau]=sign;
+            // dau++;
 
     }catch (Exception Ex){
             Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
@@ -74,28 +74,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //hàm tách số đưa vào mảng với đầu vào là một chuỗi gồm số và toán tử
 
-    //hàm tính đưa vào chuỗi
-    public double Calculate(String equation){
-            equation = equation.replace("-", "+-");
-            String[] parts = equation.split("(?=[/*+])|(?<=[/*+])");
-            result = Double.parseDouble(parts[0]);
-            for (int i = 1; i < parts.length; i += 2) {
-                String operand = parts[i];
-                double val = Double.parseDouble(parts[i+1]);
-                switch (operand) {
-                    case "*" :
-                        result *= val;
-                        break;
-                    case "/" :
-                        result /= val;
-                        break;
-                    case "+":
-                        result+=val;
-                        break;
-                }
-            }
-            return result;
-    }
+
     //ham xoa mang
 
     public double TinhToan(String a,double[]b)
@@ -168,14 +147,13 @@ public class MainActivity extends AppCompatActivity {
         //Tính toán here
 
         try {
-            //screen.setText(String.valueOf(Calculate(equation)) );
-           // screen.setText(Calculate(equation)+"");
+//            screen.setText(String.valueOf(Calculate(equation)) );
+//            screen.setText(Calculate(equation)+"");
             //nhap so cuoi cung vao mang so
-
 
             if(Landau==true)
            {  So[dau]=Double.parseDouble(demo);
-           dau--;
+                dau--;
                 screen.setText(""+TinhToan(Toantu,So));
             }
 
